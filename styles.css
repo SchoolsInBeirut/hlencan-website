@@ -4,14 +4,17 @@
 
 /* CSS Variables */
 :root {
-    /* Colors */
-    --color-black: #0B0B0B;
-    --color-white: #FFFFFF;
-    --color-gray: #8A8F98;
-    --color-gray-light: #F5F5F7;
-    --color-gray-border: #E5E5E7;
-    --color-accent-blue: #0B2D5B;
-    --color-accent-teal: #0F6A6A;
+    /* Colors - Dark Mode */
+    --color-black: #FFFFFF;
+    --color-white: #0a0a0a;
+    --color-gray: #a0a8b8;
+    --color-gray-light: rgba(10, 22, 40, 0.6);
+    --color-gray-border: rgba(255, 255, 255, 0.1);
+    --color-accent-blue: #4a9eff;
+    --color-accent-teal: #2dd4bf;
+
+    /* Dark mode gradient background */
+    --gradient-bg: linear-gradient(135deg, #000000 0%, #0a1628 50%, #0d1f3c 100%);
 
     /* Typography */
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -57,7 +60,9 @@ body {
     font-family: var(--font-family);
     font-weight: var(--font-weight-light);
     color: var(--color-black);
-    background-color: var(--color-white);
+    background: var(--gradient-bg);
+    background-attachment: fixed;
+    min-height: 100vh;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -96,7 +101,9 @@ a {
     left: 0;
     right: 0;
     height: var(--header-height);
-    background: var(--color-white);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--color-gray-border);
     z-index: 1000;
 }
@@ -118,7 +125,7 @@ a {
 }
 
 .logo-img {
-    height: 32px;
+    height: 90px;
     width: auto;
 }
 
@@ -161,6 +168,11 @@ a {
     transition: var(--transition-fast);
 }
 
+/* Logo filter for dark mode */
+.logo-img {
+    filter: brightness(0) invert(1);
+}
+
 /* ============================================
    BUTTONS
    ============================================ */
@@ -177,11 +189,11 @@ a {
 
 .btn-primary {
     background: var(--color-black);
-    color: var(--color-white);
+    color: #0a0a0a;
 }
 
 .btn-primary:hover {
-    background: #1a1a1a;
+    background: rgba(255, 255, 255, 0.9);
     transform: translateY(-1px);
 }
 
@@ -249,7 +261,8 @@ a {
     color: var(--color-gray);
     margin-bottom: var(--spacing-xl);
     padding: var(--spacing-sm) var(--spacing-md);
-    background: var(--color-gray-light);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-gray-border);
     border-radius: 4px;
     display: inline-block;
 }
@@ -265,7 +278,7 @@ a {
    ============================================ */
 .trust-strip {
     padding: var(--spacing-2xl) 0;
-    background: var(--color-gray-light);
+    background: rgba(10, 22, 40, 0.4);
     border-top: 1px solid var(--color-gray-border);
     border-bottom: 1px solid var(--color-gray-border);
 }
@@ -367,7 +380,7 @@ a {
    ============================================ */
 .focus {
     padding: var(--spacing-3xl) 0;
-    background: var(--color-gray-light);
+    background: rgba(10, 22, 40, 0.4);
 }
 
 .focus-intro {
@@ -378,7 +391,7 @@ a {
 }
 
 .focus-panel {
-    background: var(--color-white);
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--color-gray-border);
     border-radius: 8px;
     padding: var(--spacing-xl);
@@ -429,14 +442,15 @@ a {
 
 .why-card {
     padding: var(--spacing-lg);
-    background: var(--color-white);
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--color-gray-border);
     border-radius: 8px;
-    transition: border-color var(--transition-normal);
+    transition: all var(--transition-normal);
 }
 
 .why-card:hover {
-    border-color: var(--color-black);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .why-card-title {
@@ -469,7 +483,7 @@ a {
    ============================================ */
 .contact {
     padding: var(--spacing-3xl) 0;
-    background: var(--color-gray-light);
+    background: rgba(10, 22, 40, 0.4);
     text-align: center;
 }
 
@@ -482,14 +496,14 @@ a {
 .contact-email {
     font-size: 1.25rem;
     font-weight: var(--font-weight-medium);
-    color: var(--color-black);
-    border-bottom: 1px solid var(--color-black);
+    color: var(--color-accent-teal);
+    border-bottom: 1px solid var(--color-accent-teal);
     padding-bottom: 2px;
     transition: opacity var(--transition-fast);
 }
 
 .contact-email:hover {
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 /* ============================================
@@ -561,7 +575,7 @@ a {
 /* Best Fit Section */
 .best-fit {
     padding: var(--spacing-3xl) 0;
-    background: var(--color-gray-light);
+    background: rgba(10, 22, 40, 0.4);
 }
 
 .fit-columns {
@@ -571,7 +585,7 @@ a {
 }
 
 .fit-column {
-    background: var(--color-white);
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--color-gray-border);
     border-radius: 8px;
     padding: var(--spacing-xl);
@@ -632,7 +646,7 @@ a {
 /* Principles Block */
 .principles-block {
     padding: var(--spacing-2xl) 0;
-    background: var(--color-black);
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .principles-grid {
@@ -666,14 +680,14 @@ a {
 .cta-email {
     font-size: 1.25rem;
     font-weight: var(--font-weight-medium);
-    color: var(--color-black);
-    border-bottom: 1px solid var(--color-black);
+    color: var(--color-accent-teal);
+    border-bottom: 1px solid var(--color-accent-teal);
     padding-bottom: 2px;
     transition: opacity var(--transition-fast);
 }
 
 .cta-email:hover {
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 /* ============================================
@@ -709,7 +723,9 @@ a {
         top: var(--header-height);
         left: 0;
         right: 0;
-        background: var(--color-white);
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         flex-direction: column;
         padding: var(--spacing-lg);
         gap: var(--spacing-md);
